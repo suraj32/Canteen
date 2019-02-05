@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_080340) do
+ActiveRecord::Schema.define(version: 2019_02_05_090056) do
 
   create_table "attendance_details", force: :cascade do |t|
     t.integer "no_of_meals"
-    t.string "attendance"
+    t.text "attendance"
     t.integer "canteen_id"
     t.integer "customer_id"
     t.datetime "created_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_080340) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.boolean "active"
+    t.boolean "active", default: true
     t.integer "canteen_id"
     t.integer "customer_id"
     t.datetime "created_at", null: false
@@ -62,7 +62,14 @@ ActiveRecord::Schema.define(version: 2019_02_04_080340) do
     t.integer "canteen_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["canteen_id"], name: "index_users_on_canteen_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
