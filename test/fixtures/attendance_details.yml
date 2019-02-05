@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  no_of_meals: 1
+  attendance: MyString
+  canteen: one
+  customer: one
+
+two:
+  no_of_meals: 1
+  attendance: MyString
+  canteen: two
+  customer: two
