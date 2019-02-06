@@ -2,6 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.center {
+.background_image{
+	background-image: image-url('canteenhomepage.jpeg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 670px;
+	background-position: center;
+}
+.logo {
+  margin-left: 50px;
+  margin-bottom: 100px;
+}
+.about{
+  margin-right: 10px;
+  margin-left: 400px;
+}
+.button-sign {
+	border-radius: 12px;
+	margin-left: 50px;
+  background-color: transparent;
+  border-width:2px;  
+  border-style:ridge;
+  color: yellow;
+  padding: 15px 25px;
   text-align: center;
+  
+  cursor: pointer;
+}
+a:hover
+{
+	color: pink !important;
+}
+.button-sign:hover
+{
+	background-color: #af2807;
+}
+
+.button-font-color
+{
+	color: white;	
+	text-decoration: none !important;
 }
