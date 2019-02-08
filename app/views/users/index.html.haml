@@ -1,0 +1,16 @@
+.background_image
+  .logo
+    %h1{:style => "color:rgb(255, 195, 0);font-size:60px "} Canteen Master
+  /
+    <div class="about">
+    <h3 style="color:rgb(255, 195, 0)">About</h3>
+    </div>
+  - if user_signed_in?
+    = link_to "Sign Out", destroy_user_session_path, method: :delete
+    = current_user.email
+  - else
+    = link_to "Sign In", new_user_session_path, class:"button-sign button-font-color"
+    %br/ 
+    %br/ 
+    %br/
+    = link_to "Sign Up", new_user_registration_path, class: "button-sign button-font-color"
