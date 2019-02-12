@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'canteens/show'
   get 'canteens/create'
   get 'users/index'
-  #get 'canteens/:canteen_id/users', to: 'users#index1', as: 'canteen'
+  get 'canteens/:canteen_id/users', to: 'users#index1', as: 'canteen_admins'
   devise_for :users
 
   root 'users#index'

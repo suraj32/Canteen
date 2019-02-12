@@ -1,19 +1,12 @@
-.background_image
-  .container-fluid.abc
-    .row
-      .col-10  
-        %h1{:style => "color:rgb(255, 195, 0);font-size:60px"} The Canteen Master
-      .col-2
-        %h3{:style => "color:rgb(255, 195, 0)"}About
-    %br/
-    - if user_signed_in?
-      = link_to "Sign Out", destroy_user_session_path, method: :delete, class:"button-sign button-font-color"
-      %br/
-      %br/
-      %h6{:style => "color:rgb( 154, 159, 158 );"}= current_user.email
-    - else
-      = link_to "Sign In", new_user_session_path, class:"button-sign button-font-color"
-      %br/ 
-      %br/ 
-      %br/
-      = link_to "Sign Up", new_user_registration_path, class:"button-sign button-font-color"
+.container
+  .row.mt-5
+    .col-3
+    .col-4  
+      %h2 The Canteen Master
+    .col-5
+  .row.mt-5
+    .col-4
+    .col-4
+      - unless user_signed_in?
+        = link_to "Sign In", new_user_session_path, class: 'btn btn-primary btn-lg mr-2'
+    .col-4

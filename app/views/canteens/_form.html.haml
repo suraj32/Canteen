@@ -1,3 +1,5 @@
 = simple_form_for @canteen do |f|
-  = f.input :name, label: 'Enter canteen name'
-  = f.submit
+  = f.input :name
+  = f.input :address
+  = f.button :submit, 'Save canteen', class: 'btn btn-sm btn-success'
+  = link_to 'Back', canteens_path, class: 'btn btn-sm btn-dark'

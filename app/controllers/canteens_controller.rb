@@ -19,7 +19,7 @@ class CanteensController < ApplicationController
 		@canteen = Canteen.new(canteen_params)
  
   	if @canteen.save
-    	redirect_to @canteen
+    	redirect_to canteens_path
   	else
     	render 'new'
   	end
@@ -29,7 +29,7 @@ class CanteensController < ApplicationController
   	@canteen = Canteen.find(params[:id])
  
   	if @canteen.update(canteen_params)
-    	redirect_to @canteen
+    	redirect_to canteens_path
   	else
     	render 'edit'
   	end
@@ -44,6 +44,6 @@ class CanteensController < ApplicationController
 
 	private
   def canteen_params
-    params.require(:canteen).permit(:name)
+    params.require(:canteen).permit(:name, :address)
   end
 end

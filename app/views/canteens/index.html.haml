@@ -1,12 +1,10 @@
 .container
-  %h1 Listing Canteens
-  .row
-    .col-8
-      %button.btn.btn-primary.btn-md{:type => "button"}= link_to 'Create Canteen', new_canteen_path, class:"button-font-color"
-    .col-2
-      - if user_signed_in?
-        %button.btn.btn-link{:type => "button"}= link_to "Sign Out", destroy_user_session_path, method: :delete
-  %br/
+  .row.mb-3.mt-5
+    .col-9
+      %h3 Listing Canteens
+    .col-3
+      = link_to 'Create Canteen', new_canteen_path, class: 'btn btn-primary btn-md'
+    
   %table.table.table-bordered.table-hover
     %thead
       %tr
@@ -18,9 +16,9 @@
       - @canteens.each do |canteen|
         %tr
           %td= canteen.name
-          %td
+          %td= canteen.address
           %td
           %td 
-            %button.btn.btn-primary.btn-sm{:type => "button"}=link_to 'Edit', edit_canteen_path(canteen), class:"button-font-color" 
-            %button.btn.btn-primary.btn-sm{:type => "button"}=link_to 'Destroy', canteen_path(canteen), method: :delete, data: { confirm: 'Are you sure?' }, class:"button-font-color"
-            %button.btn.btn-primary.btn-sm{:type => "button"}= link_to 'Canteen Admin', new_canteen_user_path(canteen), class:"button-font-color"
+            =link_to 'Edit', edit_canteen_path(canteen), class: 'btn btn-secondary btn-sm' 
+            =link_to 'Destroy', canteen_path(canteen), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+            = link_to 'Canteen Admin', canteen_admins_path(canteen), class: 'btn btn-info btn-sm'

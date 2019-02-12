@@ -2,4 +2,5 @@
   = f.input :name, label: 'Enter canteen admin name'
   = f.input :email
   = f.input :password
-  = f.submit
+  = f.button :submit, 'Save', class: 'btn btn-sm btn-success'
+  = link_to 'Back', canteen_admins_path(@canteen), class: 'btn btn-sm btn-dark'

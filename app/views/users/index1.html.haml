@@ -1,0 +1,22 @@
+.container
+  .row.mb-3.mt-5
+    .col-9
+      %h3 Listing Admins
+    .col-3
+      = link_to 'Create Admin', new_canteen_user_path(@canteen), class: 'btn btn-primary btn-md'
+
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Actions
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.name
+          %td= user.email
+          %td 
+            =link_to 'Edit', edit_canteen_user_path(@canteen, user), class: 'btn btn-secondary btn-sm'
+            =link_to 'Destroy', canteen_user_path(@canteen, user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+  = link_to 'Back', canteens_path, class: 'btn btn-sm btn-dark'
