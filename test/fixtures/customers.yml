@@ -1,13 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  age: 1
-  phone_no: 1
-  address: MyString
+  canteen: one
 
 two:
-  name: MyString
-  age: 1
-  phone_no: 1
-  address: MyString
+  canteen: two

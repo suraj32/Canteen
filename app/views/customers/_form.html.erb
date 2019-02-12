@@ -1,0 +1,11 @@
+<%= simple_form_for @customer, do |f| %>
+ 
+    <%= f.input :name, as: :text, label: 'Enter customer name' %>
+ 
+    <%= f.input :age, collection: 14..70 %>
+
+    <%= f.input :phone_no, as: :integer %>
+
+    <%= f.input :address, as: :string %> 
+    <%= f.submit %>
+<% end %>

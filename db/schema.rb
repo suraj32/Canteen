@@ -10,16 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_090056) do
+ActiveRecord::Schema.define(version: 2019_02_11_120205) do
 
   create_table "attendance_details", force: :cascade do |t|
     t.integer "no_of_meals"
     t.text "attendance"
-    t.integer "canteen_id"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["canteen_id"], name: "index_attendance_details_on_canteen_id"
     t.index ["customer_id"], name: "index_attendance_details_on_customer_id"
   end
 
@@ -30,21 +28,21 @@ ActiveRecord::Schema.define(version: 2019_02_05_090056) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.integer "canteen_id"
     t.string "name"
     t.integer "age"
     t.integer "phone_no"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["canteen_id"], name: "index_customers_on_canteen_id"
   end
 
   create_table "memberships", force: :cascade do |t|
     t.boolean "active", default: true
-    t.integer "canteen_id"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["canteen_id"], name: "index_memberships_on_canteen_id"
     t.index ["customer_id"], name: "index_memberships_on_customer_id"
   end
 
