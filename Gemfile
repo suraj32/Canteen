@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-
+gem 'devise_invitable', '~> 1.7.0'
 gem 'bootstrap', '~> 4.2.1'
 
 gem 'jquery-rails'
