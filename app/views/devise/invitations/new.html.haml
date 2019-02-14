@@ -1,0 +1,14 @@
+.container
+  .row.mt-5
+    .col-4
+    %h3 Send Invitation to someone
+  .row
+    .col-4
+    .col-4
+      = simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), html: { method: :post} do |f|
+        - resource.class.invite_key_fields.each do |field|
+          = f.input field
+        = f.input :canteen_id, input_html: {value: @canteen.id}, as: :hidden
+        = f.button :submit, 'Send an invitation', class: 'btn btn-sm btn-primary'
+        = link_to 'Back', canteen_admins_path(@canteen), class: 'btn btn-sm btn-dark'
+    .col-4

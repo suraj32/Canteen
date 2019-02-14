@@ -1,12 +1,7 @@
 .container
-  .row.mt-5
-    .col-3
-    .col-4  
-      %h2 The Canteen Master
-    .col-5
-  .row.mt-5
-    .col-4
-    .col-4
-      - unless user_signed_in?
-        = link_to "Sign In", new_user_session_path, class: 'btn btn-primary btn-lg mr-2'
-    .col-4
+  .row.mt-5.ml-5 
+    %h1 A customer management system for canteen admins
+    %h2 Login & manage!
+  .row.mt-3.ml-5
+    - unless user_signed_in?
+      = link_to "Login", new_user_session_path, class: 'btn btn-primary btn-lg'
