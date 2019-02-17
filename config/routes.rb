@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'canteens/show'
   get 'canteens/create'
   get 'users/index'
-  
+  get 'users/canteen_admins_through_csv_view'
+  post 'users/new_through_csv', to: 'users#new_through_csv', as: 'canteen_admins_through_csv'
   get 'canteens/:canteen_id/users', to: 'users#index1', as: 'canteen_admins'
   #devise_for :users
   devise_for :users

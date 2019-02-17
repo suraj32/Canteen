@@ -1,8 +1,9 @@
 .container
   .row.mb-3.mt-5
-    .col-9
+    .col-7
       %h3 Listing Canteens
-    .col-3
+    .col-5
+      = link_to 'Import admins through csv', users_canteen_admins_through_csv_view_path, class: 'btn btn-primary btn-md'
       = link_to 'Create Canteen', new_canteen_path, class: 'btn btn-primary btn-md'
     
   %table.table.table-bordered.table-hover

@@ -1,6 +1,11 @@
 class CanteensController < ApplicationController
 	def index
-		@canteens = Canteen.all
+		if current_user.role == 'Admin'
+			@canteens = Canteen.all
+		elsif current_user.role == 'CanteenAdmin'
+			@cid = current_user.canteen_id
+			@canteens = Canteen.find_by(id: @cid)
+		end
 	end
 
 	def show
