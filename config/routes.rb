@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  get 'canteens/index'
-  get 'canteens/show'
-  get 'canteens/create'
   get 'users/index'
-  get 'users/canteen_admins_through_csv_view'
-  post 'users/new_through_csv', to: 'users#new_through_csv', as: 'canteen_admins_through_csv'
+  get 'canteens/index'
   get 'canteens/:canteen_id/users', to: 'users#index1', as: 'canteen_admins'
-  #devise_for :users
   devise_for :users
   devise_scope :user do 
     match "/canteens/:canteen_id/invitations/new", :to => "users/invitations#new", :via => "get", :as => "new_canteen_invitation"
@@ -14,6 +9,7 @@ Rails.application.routes.draw do
   end
   root 'users#index'
 
+  resources :csv_files
   resources :canteens do
     resources :users
     resources :customers do

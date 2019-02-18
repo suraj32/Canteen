@@ -1,0 +1,5 @@
+= simple_form_for(@csv_file, :html => {:enctype => "multipart/alternative"}) do |f|
+  = f.input :name
+  = f.file_field :data
+  = f.button :submit, 'import', class: 'btn btn-sm btn-success'
+  = link_to 'Back', canteens_path, class: 'btn btn-sm btn-dark'

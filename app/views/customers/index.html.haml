@@ -1,0 +1,26 @@
+.container
+  .row.mb-3.mt-5
+    .col-7
+      %h3 Listing Customers
+    .col-5
+      = link_to 'Create Customer', new_canteen_customer_path, class: 'btn btn-primary btn-md'
+    
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Age
+        %th Phone_no
+        %th Address
+        %th Actions
+    %tbody
+      - @customers.each do |customer|
+        %tr
+          %td= customer.name
+          %td= customer.age
+          %td= customer.phone_no
+          %td= customer.address
+          %td
+            =link_to 'Edit', edit_canteen_customer_path(@canteen, customer), class: 'btn btn-secondary btn-sm' 
+            =link_to 'Destroy', canteen_path(@canteen, customer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+  =link_to 'Back', canteens_index_path, class: 'btn btn-dark btn-sm'

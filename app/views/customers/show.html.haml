@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-3
+    %h3 New Customer
+  .row
+    .col-3
+    .col-5
+      %strong Name:
+        = @customer.name
+      %strong Age:
+        = @customer.age
+      %strong Phone no:
+        = @customer.phone_no
+      %strong Address:
+        = @customer.address
+    .col-4

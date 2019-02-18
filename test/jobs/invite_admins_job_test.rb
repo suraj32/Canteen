@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CsvFilesForAdminTest < ActiveSupport::TestCase
+class InviteAdminsJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

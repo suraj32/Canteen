@@ -7,46 +7,6 @@ class UsersController < ApplicationController
   	@users = @canteen.users.all
   end
 
-  def canteen_admins_through_csv_view
-  end
-
-  def new_through_csv
-    require 'csv'
-    if params[:canteenAdmins] != nil
-      uploaded_io = params[:canteenAdmins]
-      if uploaded_io.content_type == 'text/csv'
-        File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-          file.write(uploaded_io.read)
-        end
-        filename = "#{Rails.root}/public/uploads"+'/'+"#{uploaded_io.original_filename}"
-        csv_text = File.read(filename)
-        csv = CSV.parse(csv_text, :headers => true)
-        if csv.empty? == false
-          csv.each do |row|
-            if((row.length == 2)&&(row.fetch('Email') != nil)&&((Canteen.find_by(name: "#{row.fetch('Canteen name')}")) != nil))
-              next
-            else
-              flash[:danger] = "Some rows are not proper"
-              break
-            end    
-          end
-          csv.each do |row|
-            canteen = Canteen.find_by(name: "#{row.fetch('Canteen name')}")
-            User.invite!(email: "#{row.fetch('Email')}", canteen_id: canteen.id)
-          end
-          flash[:success] = "Admins imported successfully"
-        else
-          flash[:danger] = "Please select a file with some data rows"  
-        end
-      else
-        flash[:danger] = "Please select a csv file"  
-      end
-    else
-      flash[:danger] = "Please select a file"
-      render 'canteen_admins_through_csv_view'
-    end
-  end
-
   def new
   	@canteen = Canteen.find(params[:canteen_id])
   	@user = @canteen.users.new

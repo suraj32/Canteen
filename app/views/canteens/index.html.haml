@@ -3,7 +3,7 @@
     .col-7
       %h3 Listing Canteens
     .col-5
-      = link_to 'Import admins through csv', users_canteen_admins_through_csv_view_path, class: 'btn btn-primary btn-md'
+      = link_to 'Import admins through csv', new_csv_file_path, class: 'btn btn-primary btn-md'
       = link_to 'Create Canteen', new_canteen_path, class: 'btn btn-primary btn-md'
     
   %table.table.table-bordered.table-hover
@@ -23,3 +23,4 @@
             =link_to 'Edit', edit_canteen_path(canteen), class: 'btn btn-secondary btn-sm' 
             =link_to 'Destroy', canteen_path(canteen), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
             = link_to 'Canteen Admin', canteen_admins_path(canteen), class: 'btn btn-info btn-sm'
+            = link_to 'Customers', canteen_customers_path(canteen), class: 'btn btn-info btn-sm'

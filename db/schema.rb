@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_062535) do
+ActiveRecord::Schema.define(version: 2019_02_17_174719) do
 
   create_table "attendance_details", force: :cascade do |t|
     t.integer "no_of_meals"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2019_02_13_062535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+  end
+
+  create_table "csv_files", force: :cascade do |t|
+    t.string "name", null: false
+    t.binary "data", null: false
+    t.string "filename"
+    t.string "mime_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|

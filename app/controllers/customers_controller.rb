@@ -1,14 +1,51 @@
 class CustomersController < ApplicationController
-	def new
-		@customer = Customer.new
+
+	def index
 		@canteen = Canteen.find(params[:canteen_id])
+		@customers = @canteen.customers.all
+	end
+
+	def new
+		@canteen = Canteen.find(params[:canteen_id])
+		@customer = @canteen.customers.new
+	end
+
+	def show
+		@canteen = Canteen.find(params[:canteen_id])
+		@customer = @canteen.customers.find(params[:id])
+	end
+
+	def edit
+		@canteen = Canteen.find(params[:canteen_id])
+		@customer = @canteen.customers.find(params[:id])
 	end
 
 	def create
-		@customer = Customer.new(customer_params)
-		unless @customer.save
+		@canteen = Canteen.find(params[:canteen_id])
+		@customer = @canteen.customers.new(customer_params)
+		if @customer.save
+			redirect_to @customer
+		else
 			render 'new'
 		end
+	end
+
+	def update
+		@canteen = Canteen.find(params[:canteen_id])
+		@customer = @canteen.customers.find(params[:id])
+
+		if @customer.update(customer_params)
+    	redirect_to canteen_customers_path(@canteen)
+  	else
+    	render 'edit'
+  	end
+	end
+
+	def destroy
+		@canteen = Canteen.find(params[:canteen_id])
+  	@customer = @canteen.customers.find(params[:id])
+  	@customer.destroy
+  	redirect_to canteen_customers_path(@canteen)
 	end
 
 	private

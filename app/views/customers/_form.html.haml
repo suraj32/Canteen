@@ -1,0 +1,7 @@
+= simple_form_for [@canteen, @customer] do |f|
+  = f.input :name
+  = f.input :age
+  = f.input :phone_no
+  = f.input :address
+  = f.button :submit, 'Save customer', class: 'btn btn-sm btn-success'
+  =link_to 'Back', canteen_customers_path(@canteen), class: 'btn btn-dark btn-sm'
