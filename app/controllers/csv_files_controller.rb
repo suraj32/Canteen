@@ -21,10 +21,11 @@ class CsvFilesController < ApplicationController
     end
     
     if @csv_file.save
-    	InviteAdminsJob.perform_now(@csv_file.id)
-      redirect_to( @csv_file, :notice => 'csv_file was successfully created.')
+    	InviteAdminsJob.perform_later(@csv_file.id)
+      flash[:success] = "File imported successfully"
+      redirect_to canteens_index_path
     else
-      render :action => "new"
+      render 'new'
     end
   end
   
