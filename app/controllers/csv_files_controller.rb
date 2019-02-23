@@ -21,7 +21,7 @@ class CsvFilesController < ApplicationController
     end
     
     if @csv_file.save
-    	InviteAdminsJob.perform_now(@csv_file.id)
+    	InviteAdminsJob.perform_async(@csv_file.id)
       flash[:success] = "File imported successfully"
       redirect_to canteens_index_path
     else
@@ -30,9 +30,9 @@ class CsvFilesController < ApplicationController
   end
   
   def destroy
-    @csv_file = csv_file.find(params[:id])
+    @csv_file = CsvFile.find(params[:id])
     @csv_file.destroy
-    redirect_to(csv_files_url)
+    redirect_to(csv_files_path)
   end
 
   private

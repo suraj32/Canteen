@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/index'
   get 'canteens/index'
-  get 'canteens/:canteen_id/users', to: 'users#index1', as: 'canteen_admins'
+  get 'canteens/:canteen_id/users', to: 'users#index_for_canteen_admin', as: 'canteen_admins'
   devise_for :users
   devise_scope :user do 
     match "/canteens/:canteen_id/invitations/new", :to => "users/invitations#new", :via => "get", :as => "new_canteen_invitation"

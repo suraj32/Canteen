@@ -30,6 +30,6 @@ class InviteAdminsJob < ApplicationJob
         end
       end
     end
-    UserMailer.with(content: new_csv).send_csv_report.deliver_now
+    UserMailer.with(content: new_csv).send_csv_report.deliver
   end
 end

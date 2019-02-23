@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
   end
 
-  def index1
+  def index_for_canteen_admin
   	@canteen = Canteen.find(params[:canteen_id])
   	@users = @canteen.users.all
   end
