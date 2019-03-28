@@ -21,7 +21,7 @@ class CsvFilesController < ApplicationController
     end
     
     if @csv_file.save
-    	InviteAdminsJob.perform_async(@csv_file.id)
+    	InviteAdminsJob.perform_now(@csv_file.id)
       flash[:success] = "File imported successfully"
       redirect_to canteens_index_path
     else

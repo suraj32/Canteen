@@ -4,6 +4,7 @@ class InviteAdminsJob < ApplicationJob
 
   def perform(csv_file_id)
     csv_file = CsvFile.find(csv_file_id)
+    byebug
     csv = CSV.parse(csv_file.data, :headers => true)
     new_csv = CSV.generate do |new_csv|
       new_csv << ['Email', 'Canteen name', 'Status']
@@ -30,6 +31,6 @@ class InviteAdminsJob < ApplicationJob
         end
       end
     end
-    UserMailer.with(content: new_csv).send_csv_report.deliver
+    UserMailer.with(content: new_csv).send_csv_report.deliver_now
   end
 end
